@@ -1,0 +1,28 @@
+### Configuration parameters for Enki training
+
+# General training settings
+model_name: "enki_model"
+img_height: 350
+img_width: 350
+batch_size: 128
+num_epochs: 10
+learning_rate: 0.0001
+fine_tune_learning_rate: 0.00001
+
+# Dataset paths, please change the relative paths
+data_dir: "..Desktop/enki/enki_dataset/Normalized_Tell_combined_350"
+output_dir: "../models"
+report_dir: "../reports"
+
+# Validation split
+validation_split: 0.2
+
+# Model architecture
+base_model: "EfficientNetB0"  # Alternative: "ResNet50"
+freeze_layers: 75  # Number of layers to freeze during fine-tuning
+
+# Callbacks settings
+early_stopping_patience: 5
+reduce_lr_factor: 0.2
+reduce_lr_patience: 3
+min_lr: 0.000001
