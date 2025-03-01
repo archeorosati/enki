@@ -23,6 +23,6 @@ These datasets provide a robust foundation for machine learning applications in 
 📩 Have questions? Open an [issue](https://github.com/archeorosati/enki/issues) or start a discussion!
 
 ---
-📌 **License**: GPL-3.0 *(or Apache 2.0/MIT, based on your choice)*  
+📌 **License**: GPL-3.0  
 📌 **Author**: Enki Project  
 📌 **Status**: 🚧 *Under active development*
