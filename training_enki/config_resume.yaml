@@ -1,4 +1,4 @@
-### Configuration parameters for Enki training
+### Resume of configuration parameters for Enki training
 
 # General training settings
 model_name: "enki_model"
