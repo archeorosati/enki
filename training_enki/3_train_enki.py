@@ -85,14 +85,14 @@ model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=1e-4),
 
 # 📌 Define callbacks for training stability
 early_stopping = EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)
-model_checkpoint = ModelCheckpoint(os.path.join(output_dir, "best_model.keras"), save_best_only=True, monitor="val_loss")
+model_checkpoint = ModelCheckpoint(os.path.join(output_dir, "enki_model.keras"), save_best_only=True, monitor="val_loss")
 reduce_lr = ReduceLROnPlateau(monitor="val_loss", factor=0.2, patience=3, min_lr=1e-6)
 
 # 🚀 Optimized training
 history = model.fit(
     train_dataset,
     validation_data=val_dataset,
-    epochs=10,
+    epochs=15,
     callbacks=[early_stopping, model_checkpoint, reduce_lr]
 )
 
