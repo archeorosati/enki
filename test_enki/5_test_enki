@@ -1,0 +1,62 @@
+import tensorflow as tf
+import os
+import pandas as pd
+import numpy as np
+from tensorflow.keras.preprocessing import image_dataset_from_directory
+
+# ✅ Automatically detect OS and set paths accordingly
+base_dir = os.path.expanduser("~/Desktop/enki/enki_dataset/Test_2025_02_05") if os.name != "nt" else os.path.join(os.environ["USERPROFILE"], "Desktop", "enki", "enki_dataset")
+
+# 📌 Define paths relative to the base directory
+model_path = os.path.join(base_dir, "Model_0.4", "model_final.keras")
+test_dir = os.path.join(base_dir, "Test", "Test_2025_02_05")
+output_dir = os.path.join(base_dir, "Test_results")
+output_excel = os.path.join(output_dir, "test_results_percent_20250205_1.xlsx")
+output_csv = output_excel.replace(".xlsx", ".csv")
+
+# ✅ Ensure necessary directories exist
+os.makedirs(output_dir, exist_ok=True)
+
+# ✅ Activate Metal for acceleration on Mac M2
+try:
+    tf.config.experimental.set_memory_growth(tf.config.list_physical_devices('GPU')[0], True)
+    print("✅ Metal Backend for TensorFlow activated!")
+except:
+    print("⚠️ No GPU available. CPU will be used.")
+
+# ✅ Check if the model exists
+if not os.path.exists(model_path):
+    raise FileNotFoundError(f"❌ ERROR: Model not found at {model_path}")
+
+# ✅ Load the model
+model = tf.keras.models.load_model(model_path)
+print("✅ Model loaded successfully!")
+model.summary()
+
+# ✅ Load test images as TensorFlow Dataset
+test_dataset = image_dataset_from_directory(
+    test_dir,
+    image_size=(350, 350),
+    batch_size=1,  # ⚡️ Avoid Memory Overflow on low RAM systems
+    shuffle=False,  # ⚠️ Important to maintain the correct file name order
+    labels=None  # No labels in the test set
+)
+
+# ✅ Make predictions
+predictions = model.predict(test_dataset)
+predicted_percentages = predictions * 100  # Convert to percentage
+
+# ✅ Retrieve image file names
+image_filenames = [os.path.basename(path) for path in test_dataset.file_paths]
+
+# ✅ Create DataFrame with results
+results_df = pd.DataFrame({
+    'Image Name': image_filenames,
+    'Positive Class Percentage': predicted_percentages[:, 1]  # Percentage for the positive class
+})
+
+# ✅ Save results in Excel and CSV
+results_df.to_excel(output_excel, index=False)
+results_df.to_csv(output_csv, index=False)
+
+print(f"✅ Results saved in:\n🔹 Excel: {output_excel}\n🔹 CSV: {output_csv}")
