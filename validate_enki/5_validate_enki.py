@@ -9,20 +9,20 @@ from tensorflow.keras.utils import image_dataset_from_directory
 os.environ["TF_METAL"] = "1"
 tf.config.list_physical_devices("GPU")
 
-# 📂 Defines the absolute path for the training dataset directory
-base_dir = os.path.expanduser("~/Desktop/enki/enki_dataset")
+# 📂 Define the absolute path for the dataset directory
+base_dir = os.path.expanduser("~/Desktop/enki/enki_dataset") if os.name != "nt" else os.path.join(os.environ["USERPROFILE"], "Desktop", "enki", "enki_dataset")
 
 # 📌 Directories for dataset, models, and reports
-data_dir = base_dir  # Dataset direttamente nella cartella principale
-output_dir = os.path.join(base_dir, "models")  # Cartella per i modelli
-report_dir = os.path.join(base_dir, "reports")  # Cartella per i report
+data_dir = base_dir  
+output_dir = Path(base_dir) / "models"
+report_dir = Path(base_dir) / "reports"
+model_dir = Path(base_dir).parent / "models"
+model_path = model_dir / "enki.keras"
+val_dir = Path(base_dir) / "validation"  # Define validation dataset directory
 
-# 📌 Ensure the output and report directories exist
-os.makedirs(output_dir, exist_ok=True)
-os.makedirs(report_dir, exist_ok=True)
-
-# Ensure output directory exists
+# 📌 Ensure necessary directories exist
 output_dir.mkdir(parents=True, exist_ok=True)
+report_dir.mkdir(parents=True, exist_ok=True)
 
 # ✅ Load the model
 try:
