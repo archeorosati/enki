@@ -1,4 +1,4 @@
-# **Enki: AI-Assistant for Archaeological Discovery**  
+# **Enki: AI-Assistant for Archaeological Discoveries**  
 
 🚀 **Unveiling the Past with Artificial Intelligence**  
 
