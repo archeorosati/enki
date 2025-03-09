@@ -16,7 +16,7 @@
 
 ## 📂 **Datasets & Acknowledgments**  
 Enki is trained on high-quality satellite and aerial imagery datasets, including:  
-- 🔗 **[Enki Datasets on Zenodo](https://zenodo.org/records/XXXXX)**  
+- 🔗 **[Enki Datasets on Zenodo](https://zenodo.org/records/XXXXX)**  *(CC-BY-SA 4.0)* 
 - 🏺 **[Ancient Near East (ANE) Project](https://zenodo.org/records/6384045)** *(CC-BY-SA 4.0)*  
 
 These datasets provide a robust foundation for machine learning applications in archaeology, enhancing our ability to analyze vast landscapes.
