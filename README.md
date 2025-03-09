@@ -1,5 +1,9 @@
 # **Enki: AI-Assistant for Archaeological Discoveries**  
 
+[![GitHub stars](https://img.shields.io/github/stars/archeorosati/enki?style=social)](https://github.com/archeorosati/enki/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/archeorosati/enki?style=social)](https://github.com/archeorosati/enki/network/members)
+[![GitHub issues](https://img.shields.io/github/issues/archeorosati/enki)](https://github.com/archeorosati/enki/issues)
+
 🚀 **Unveiling the Past with Artificial Intelligence**  
 
 **Enki**—named after the Sumerian deity of knowledge, Enki (𒀭𒂗𒆤)—is an open-source deep learning framework designed to **detect and analyze archaeological sites** through **computer vision** and **remote sensing**. By leveraging satellite imagery, GIS data, and advanced deep learning models, Enki helps researchers uncover hidden ancient landscapes with unprecedented precision.
